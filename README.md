@@ -1,4 +1,4 @@
-# Miryang.dev 🖤
+# Kiyoon Jung Blog
 
 My personal dev blog
 
