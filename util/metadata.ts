@@ -15,13 +15,13 @@ interface MetadataProps {
   };
 }
 
-const webUrl = "https://miryang.dev";
+const webUrl = "https://kiyoonjung.vercel.app/";
 
 const defaultImage = `/main.png`;
 
 export default function metadata(props: MetadataProps): Metadata {
   const { title, description: desc, path, image, label1, label2 } = props;
-  const description = desc + " | 미량의 개발 블로그, miryang.dev";
+  const description = desc + " | kiyoonJung's Blog";
 
   const images = webUrl + (image ?? defaultImage);
 
@@ -32,7 +32,7 @@ export default function metadata(props: MetadataProps): Metadata {
       title,
       description,
       url: webUrl + path,
-      siteName: "miryang.dev",
+      siteName: "kiyoonjung.vercel.app",
       images,
       locale: "ko_KR",
     },
