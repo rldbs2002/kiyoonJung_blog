@@ -15,7 +15,7 @@ export const projects: Project[] = [
   {
     title: "kiyoonJ's Blog",
     description: "My personal website written with Next.js",
-    url: "https://github.com/rldbs2002",
+    url: "https://github.com/rldbs2002/kiyoonJung_blog",
     image: "/projects/myblog.PNG",
   },
 ];
