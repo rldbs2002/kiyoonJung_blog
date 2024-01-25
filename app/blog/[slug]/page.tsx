@@ -3,7 +3,6 @@ import { allBlogs } from "contentlayer/generated";
 import type { Metadata } from "next";
 import { Mdx } from "./components/mdx";
 import metadata from "@/util/metadata";
-import Supplement from "./components/supplement";
 
 interface Props {
   params: {
@@ -25,7 +24,6 @@ export default async function DocPage({ params }: Props) {
       </h1>
       <time className="text-gray-500 text-sm mt-2 ml-auto">{post.date}</time>
       <Mdx code={post.body.code} />
-      <Supplement />
     </div>
   );
 }
