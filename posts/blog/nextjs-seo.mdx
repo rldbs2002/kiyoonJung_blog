@@ -1,0 +1,184 @@
+---
+title: Next.js의 SEO에 대해 알아보자
+date: 2024-01-25
+description: Next.js의 SEO기능을 이용하여 검색띄우기
+thumbnailUrl: /posts/thumbnail/nextjs-seo.png
+---
+
+## 목표
+
+- seo를 알아봅니다.
+
+## SEO
+
+> Search Engine Optimization  
+> 검색 엔진에서의 노출도를 높이도록 사이트를 개선하는 최적화 작업  
+> [참고 코드](https://github.com/leerob/leerob.io/blob/main/components/Container.tsx)
+
+> 핸즈온에서 다루지 않지만 사용하면 좋은 라이브러리  
+> [next-seo](https://github.com/garmeeh/next-seo)
+
+metadata에 값 추가
+
+```ts:data/metadata.ts
+import { Metadata } from "next";
+
+interface MetadataProps {
+  title: string;
+  description: string;
+  path: string;
+  image?: string;
+  label1?: {
+    name: string;
+    data: string | number;
+  };
+  label2?: {
+    name: string;
+    data: string | number;
+  };
+}
+
+const webUrl = "https://kiyoonjung.vercel.app/";
+
+const defaultImage = `/main.png`;
+
+export default function metadata(props: MetadataProps): Metadata {
+  const { title, description: desc, path, image, label1, label2 } = props;
+  const description = desc + " | kiyoonjung's Blog";
+
+  const images = webUrl + (image ?? defaultImage);
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: webUrl + path,
+      siteName: "kiyoonjung.vercel.app",
+      images,
+      locale: "ko_KR",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images,
+    },
+    other: {
+      ["twitter:label1"]: label1?.name ?? "",
+      ["twitter:data1"]: label1?.data ?? "",
+      ["twitter:label2"]: label2?.name ?? "",
+      ["twitter:data2"]: label2?.data ?? "",
+    },
+  };
+}
+
+```
+
+**각 Layout**에 custommeta를 적용할 수 있게 수정
+
+```tsx:components/page-layout.tsx
+
+import { cn } from "./ui/utils";
+
+interface PageLayoutProps {
+  children: React.ReactNode;
+  title?: string;
+  description?: string;
+  className?: string;
+}
+
+export default function PageLayout({
+  children,
+  title,
+  description,
+  className,
+}: PageLayoutProps) {
+  return (
+    <div className={cn(["px-5 pt-7 pb-16 flex flex-col gap-5", className])}>
+      {(title || description) && (
+        <div className="flex flex-col gap-1">
+          {title && <h1 className="text-2xl font-bold">{title}</h1>}
+          {description && <span className="text-gray-500">{description}</span>}
+        </div>
+      )}
+
+      {children}
+    </div>
+  );
+}
+
+```
+
+layout 예시
+
+```tsx:about/layout.tsx
+
+import PageLayout from "@/components/page-layout";
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <PageLayout title="kiyoonjung" description="안녕하세요.">
+      {children}
+    </PageLayout>
+  );
+}
+
+```
+
+blog post에 custommeta 설정
+
+```tsx:pages/blog/[slug].tsx
+
+...
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const doc = await getDocFromParams({ params });
+
+  if (!doc) {
+    return {};
+  }
+
+  return metadata({
+    title: doc.title,
+    description: doc.description,
+    path: `/blog/${doc.slug}`,
+    image: `/${doc.thumbnailUrl}`,
+  });
+}
+```
+
+sitemap 생성
+
+```tsx:app/sitemap.ts
+
+import { MetadataRoute } from "next";
+import { allBlogs } from "@/.contentlayer/generated";
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const posts = allBlogs.sort(
+    (a, b) => Number(new Date(b.date)) - Number(new Date(a.date))
+  );
+
+  const webUrl = "https://kiyoonjung.vercel.app";
+
+  const blogPosts =
+    posts?.map((post) => ({
+      url: `${webUrl}/blog/${post.slug}`,
+      lastModified: new Date(post.date).toISOString().split("T")[0],
+    })) ?? [];
+
+  const routes = [
+    "",
+    "/blog",
+    "/about",
+    "/projects",
+  ].map((route) => ({
+    url: `${webUrl}${route}`,
+    lastModified: new Date().toISOString().split("T")[0],
+  }));
+
+  return [...blogPosts, ...routes];
+}
+```
