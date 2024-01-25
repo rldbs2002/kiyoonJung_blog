@@ -47,6 +47,8 @@ export default function metadata(props: MetadataProps): Metadata {
       ["twitter:data1"]: label1?.data ?? "",
       ["twitter:label2"]: label2?.name ?? "",
       ["twitter:data2"]: label2?.data ?? "",
+      ["google-site-verification"]:
+        "google-site-verification=g3jKq09mN5sWdahOwqF30Jp3Xiq2hNXVfrr14VJ6Yvo",
     },
   };
 }
