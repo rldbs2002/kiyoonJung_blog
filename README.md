@@ -1,4 +1,4 @@
-# Kiyoon Jung Blog
+# Kiyoonjung Blog
 
 My personal dev blog
 

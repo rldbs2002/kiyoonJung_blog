@@ -33,7 +33,7 @@ export default function RootLayout({
 }
 
 export const metadata: Metadata = {
-  title: "kiyoon Jung | Frontend Developer",
+  title: "kiyoonjung | Frontend Developer",
   description:
-    "kiyoon Jung, 프론트엔드 개발자의 블로그, Frontend Developer who likes football",
+    "kiyoonjung, 프론트엔드 개발자의 블로그, Frontend Developer who likes football",
 };

@@ -21,7 +21,7 @@ const defaultImage = `/main.png`;
 
 export default function metadata(props: MetadataProps): Metadata {
   const { title, description: desc, path, image, label1, label2 } = props;
-  const description = desc + " | kiyoonJung's Blog";
+  const description = desc + " | kiyoonjung's Blog";
 
   const images = webUrl + (image ?? defaultImage);
 
