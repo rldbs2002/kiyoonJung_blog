@@ -182,3 +182,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [...blogPosts, ...routes];
 }
 ```
+
+robots.txt 생성
+
+```tsx:app/robots.txt
+
+User-agent: *
+Allow: /
+
+Sitemap: https://kiyoonjung.vercel.app/sitemap.xml
+
+```
+
+metadata에 google search console 추가
+
+```tsx:app/layout.tsx
+
+export const metadata: Metadata = {
+  title: "kiyoonjung | Frontend Developer",
+  description:
+    "kiyoonjung, 프론트엔드 개발자의 블로그, Frontend Developer who likes football",
+  verification: {
+    google:
+      "google-site-verification=g3jKq09mN5sWdahOwqF30Jp3Xiq2hNXVfrr14VJ6Yvo",
+  },
+};
+
+```
