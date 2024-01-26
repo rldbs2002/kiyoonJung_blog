@@ -36,4 +36,8 @@ export const metadata: Metadata = {
   title: "kiyoonjung | Frontend Developer",
   description:
     "kiyoonjung, 프론트엔드 개발자의 블로그, Frontend Developer who likes football",
+  verification: {
+    google:
+      "google-site-verification=g3jKq09mN5sWdahOwqF30Jp3Xiq2hNXVfrr14VJ6Yvo",
+  },
 };

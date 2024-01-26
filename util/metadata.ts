@@ -28,10 +28,7 @@ export default function metadata(props: MetadataProps): Metadata {
   return {
     title,
     description,
-    verification: {
-      google:
-        "google-site-verification=g3jKq09mN5sWdahOwqF30Jp3Xiq2hNXVfrr14VJ6Yvo",
-    },
+
     openGraph: {
       title,
       description,
