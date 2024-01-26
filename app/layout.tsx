@@ -38,6 +38,6 @@ export const metadata: Metadata = {
     "kiyoonjung, 프론트엔드 개발자의 블로그, Frontend Developer who likes football",
   verification: {
     google:
-      "google-site-verification=g3jKq09mN5sWdahOwqF30Jp3Xiq2hNXVfrr14VJ6Yvo",
+      "google-site-verification=p1o3jiRcmsisv5ooPtGe_KWJwD1Sp1s9zPg5S4GUQvg",
   },
 };
