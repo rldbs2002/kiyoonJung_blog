@@ -65,9 +65,6 @@ thumbnailUrl: /posts/thumbnail/build-blog-with-nextjs.png
 
 ## 1️⃣ 1. 시작하기
 
-- [해당 브랜치](https://github.com/MiryangJung/Build-Own-blog-With-Next.js/tree/1/start)
-- `git clone -b 1/start https://github.com/MiryangJung/Build-Own-blog-With-Next.js`
-
 ### 보일러플레이트 설치
 
 ```bash
@@ -134,9 +131,6 @@ yarn dev
 ```
 
 ## 2️⃣ 2. 라우팅
-
-- [해당 브랜치](https://github.com/MiryangJung/Build-Own-blog-With-Next.js/tree/2/routing)
-- `git clone -b 2/routing https://github.com/MiryangJung/Build-Own-blog-With-Next.js`
 
 ### 페이지 생성
 
@@ -252,9 +246,6 @@ export default Blog;
 ```
 
 ## 3️⃣ 3. 스타일링
-
-- [해당 브랜치](https://github.com/MiryangJung/Build-Own-blog-With-Next.js/tree/3/styling)
-- `git clone -b 3/styling https://github.com/MiryangJung/Build-Own-blog-With-Next.js`
 
 쉬운 데이터 관리를 위해 `metadata.ts` 생성
 
@@ -399,7 +390,7 @@ const Blog = () => {
       <div className={`mt-10 flex flex-col`}>
         <BlogPost />
         <BlogPost />
-        
+
         <BlogPost />
       </div>
     </Container>
@@ -410,9 +401,6 @@ export default Blog;
 ```
 
 ## 4️⃣ 4. contentlayer
-
-- [해당 브랜치](https://github.com/MiryangJung/Build-Own-blog-With-Next.js/tree/4/contentlayer)
-- `git clone -b 4/contentlayer https://github.com/MiryangJung/Build-Own-blog-With-Next.js`
 
 > [contentlayer](https://github.com/contentlayerdev/contentlayer)  
 > "contentlayer": "^0.2.6" 버전 사용  
@@ -460,8 +448,8 @@ module.exports = withContentlayer({
 
 ```md:posts/first.mdx
 ---
-title: Miryang의 Next.js 핸즈온
-date: 2022-03-10
+title: kiyoonjung의 Next.js 블로그 만들기
+date: 2024-01-10
 description: 설명란입니다. 설명을 적어요~
 ---
 
@@ -620,9 +608,6 @@ export default Home;
 
 ## 5️⃣ 5. Blog Post
 
-- [해당 브랜치](https://github.com/MiryangJung/Build-Own-blog-With-Next.js/tree/5/post)
-- `git clone -b 5/post https://github.com/MiryangJung/Build-Own-blog-With-Next.js`
-
 blog 글 페이지 생성  
 post code를 html로 변환
 
@@ -688,15 +673,8 @@ module.exports = {
 
 ## 6️⃣ 6. SEO
 
-- [해당 브랜치](https://github.com/MiryangJung/Build-Own-blog-With-Next.js/tree/6/seo)
-- `git clone -b 6/seo https://github.com/MiryangJung/Build-Own-blog-With-Next.js`
-
 > Search Engine Optimization  
-> 검색 엔진에서의 노출도를 높이도록 사이트를 개선하는 최적화 작업  
-> [참고 코드](https://github.com/leerob/leerob.io/blob/main/components/Container.tsx)
-
-> 핸즈온에서 다루지 않지만 사용하면 좋은 라이브러리  
-> [next-seo](https://github.com/garmeeh/next-seo)
+> 검색 엔진에서의 노출도를 높이도록 사이트를 개선하는 최적화 작업
 
 metadata에 값 추가
 
